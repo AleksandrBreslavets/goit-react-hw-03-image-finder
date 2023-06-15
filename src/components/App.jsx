@@ -108,7 +108,7 @@ export class App extends Component{
       {isEmpty && <p>{EMPTY_MSG}</p>}
       {error && <p>{ERROR_MSG}</p>}
       {isLoading && <Loader/>}
-      {isShowBtn && <Button onClick={this.onLoadMoreBtnClick}>Load more</Button>}
+      {isShowBtn && <Button onClick={this.onLoadMoreBtnClick}/>}
       <Modal isOpen={isModalShown} onClose={this.onModalClose} bigImg={bigImage}></Modal>
     </>
   }
