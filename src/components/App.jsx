@@ -28,7 +28,7 @@ export class App extends Component{
 
   async componentDidUpdate(_, prevState) {
     const { query, page } = this.state;
-    if (prevState.query !== query || prevState.page!==page) {
+    if (prevState.query !== query || prevState.page !== page) {
       try
       {
         if (this.abortCtrl) {
@@ -73,7 +73,7 @@ export class App extends Component{
 
   onLoadMoreBtnClick = e => {
     this.setState(prevState => ({
-      page: prevState.page+=1
+      page: prevState.page + 1
     }))
   }
   
