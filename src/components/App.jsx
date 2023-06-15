@@ -28,7 +28,12 @@ export class App extends Component{
 
   async componentDidUpdate(_, prevState) {
     const { query, page } = this.state;
+<<<<<<< HEAD
     if (prevState.query !== query || prevState.page !== page) {
+=======
+    if (prevState.query !== query || prevState.page!==page) {
+      console.log("Yes")
+>>>>>>> d150c091d4bff6b96ae2bf2a7c677a2dc71b6292
       try
       {
         if (this.abortCtrl) {
