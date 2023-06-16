@@ -53,7 +53,7 @@ export class App extends Component{
         
         this.setState(prevState => ({
           images: [...prevState.images, ...images],
-          isShowBtn: currPage < Math.ceil(totalHits / per_page)
+          isShowBtn: currPage < Math.ceil(totalHits / per_page),
         })); 
       }
       catch (error)
@@ -66,7 +66,7 @@ export class App extends Component{
       {
         this.setState({isLoading:false})
       }
-    }    
+    }   
   }
 
   componentWillUnmount() {
@@ -80,6 +80,9 @@ export class App extends Component{
   }
   
   onFormSubmit = (value) => {
+    if (this.state.query === value) {
+      return;
+    }
     this.setState({
       query: value,
       images: [],
