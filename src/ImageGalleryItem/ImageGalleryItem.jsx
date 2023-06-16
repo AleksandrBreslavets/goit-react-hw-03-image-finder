@@ -1,3 +1,5 @@
+import { GalleryImg, GalleryItem } from "./ImageGalleryItem.styled"
+
 export const ImageGalleryItem = ({webformatURL, largeImageURL, tags}) => {
-    return <li><img src={webformatURL} alt={tags} data-bigphoto={largeImageURL} /></li>
+    return <GalleryItem><GalleryImg src={webformatURL} alt={tags} data-bigphoto={largeImageURL} /></GalleryItem>
 }

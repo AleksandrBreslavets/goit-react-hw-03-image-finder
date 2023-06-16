@@ -1,5 +1,6 @@
 import { Component } from "react";
-
+import { Searchform, Searchinput, Button } from "./Searchbar.styled";
+import { BsSearch } from 'react-icons/bs';
 const INITIAL_STATE = {
   searchValue: '',
 };
@@ -26,11 +27,11 @@ export class Searchbar extends Component{
         const { searchValue } = this.state;
         return (
             <header>
-            <form onSubmit={this.onFormSubmit}>
-                <button type="submit">
-                <span >Search</span>
-                </button>
-                <input
+            <Searchform onSubmit={this.onFormSubmit}>
+                <Button type="submit">
+                <BsSearch/>
+                </Button>
+                <Searchinput
                 onChange={this.onInputChange}
                 value={searchValue}
                 type="text"
@@ -38,7 +39,7 @@ export class Searchbar extends Component{
                 autoFocus
                 placeholder="Search images and photos"
                 />
-            </form>
+            </Searchform>
             </header>
         )
     }

@@ -5,6 +5,7 @@ import { ImageGallery } from "./ImageGallery/ImageGallery";
 import { Button } from "./Button/Button";
 import { Loader } from "./Loader/Loader";
 import { Modal } from "./Modal/Modal";
+import { Wrapper, Text } from "./App.styled";
 
 const EMPTY_MSG = 'Sorry. There are not such images...';
 const EMPTY_INPUT_MSG = "Please, type something in input to search.";
@@ -29,7 +30,6 @@ export class App extends Component{
   async componentDidUpdate(_, prevState) {
     const { query, page } = this.state;
     if (prevState.query !== query || prevState.page!==page) {
-      console.log("Yes")
       try
       {
         if (this.abortCtrl) {
@@ -102,15 +102,15 @@ export class App extends Component{
   }
   render() {
     const { images,isLoading, isShowBtn, isQueryEmpty, isEmpty, error, isModalShown, bigImage} = this.state;
-    return <>
+    return <Wrapper>
       <Searchbar onSubmit={this.onFormSubmit}/>
       <ImageGallery images={images} onOpen={this.onModalOpen} />
-      {isQueryEmpty && <p>{EMPTY_INPUT_MSG}</p>}
-      {isEmpty && <p>{EMPTY_MSG}</p>}
-      {error && <p>{ERROR_MSG}</p>}
+      {isQueryEmpty && <Text>{EMPTY_INPUT_MSG}</Text>}
+      {isEmpty && <Text>{EMPTY_MSG}</Text>}
+      {error && <Text>{ERROR_MSG}</Text>}
       {isLoading && <Loader/>}
       {isShowBtn && <Button onClick={this.onLoadMoreBtnClick}/>}
       <Modal isOpen={isModalShown} onClose={this.onModalClose} bigImg={bigImage}></Modal>
-    </>
+    </Wrapper>
   }
 }
