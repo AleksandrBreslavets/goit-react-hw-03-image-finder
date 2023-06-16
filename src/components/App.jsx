@@ -45,6 +45,7 @@ export class App extends Component{
         const {
           data: { hits: images, totalHits },
           config: { params: { page: currPage, per_page } } } = response;
+        console.log(typeof images[0].id)
         if (!images.length) {
           this.setState({ isEmpty: true });
           return;

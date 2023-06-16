@@ -1,10 +1,11 @@
 import ReactModal from 'react-modal';
+import PropTypes from "prop-types";
 import { disableBodyScroll, enableBodyScroll} from 'body-scroll-lock';
 import { ModalImg } from './Modal.styled';
 
 ReactModal.setAppElement('#root');
 
-export const Modal = ({ isOpen, onClose, bigImg:{bigImgURL, altDescr} }) => {
+export const Modal = ({ isOpen, onClose, bigImg: { bigImgURL, altDescr } }) => {
   const styles = {
     overlay: {
       position: 'fixed',
@@ -26,18 +27,27 @@ export const Modal = ({ isOpen, onClose, bigImg:{bigImgURL, altDescr} }) => {
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
       backgroundColor: 'unset',
-      border:'unset'
-  }
-};
-    return (
-      <ReactModal
-        isOpen={isOpen}
-        onAfterOpen={() => disableBodyScroll(document)}
-        onAfterClose={()=>enableBodyScroll(document)}
-        onRequestClose={onClose}
-        style={styles}
-      >
-        <ModalImg src={bigImgURL} alt={altDescr} />
-      </ReactModal>
+      border: 'unset'
+    }
+  };
+  return (
+    <ReactModal
+      isOpen={isOpen}
+      onAfterOpen={() => disableBodyScroll(document)}
+      onAfterClose={() => enableBodyScroll(document)}
+      onRequestClose={onClose}
+      style={styles}
+    >
+      <ModalImg src={bigImgURL} alt={altDescr} />
+    </ReactModal>
   );
-}
+};
+
+Modal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  bigImg: PropTypes.shape({
+    bigImgURL: PropTypes.string.isRequired,
+    altDescr: PropTypes.string.isRequired,
+  }).isRequired,
+};
