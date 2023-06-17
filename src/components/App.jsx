@@ -90,7 +90,7 @@ export class App extends Component{
       error: null,  
       isShowBtn: false,
       isEmpty: false,
-      isQueryEmpty: value? false:true,
+      isQueryEmpty: !value,
       isModalShown: false,
       bigImage:'',
     })
